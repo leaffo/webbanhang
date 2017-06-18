@@ -3,10 +3,6 @@ div a{
 
 
 }
-h1~p{
-    color:red;
-
-}
 a {
     color:black;
 }
@@ -26,8 +22,10 @@ a:hover{
     text-transform: uppercase;
 
 }
+
 ul{
  margin:0px;
+    padding:0px;
 }
 li{
     list-style:none;
@@ -55,8 +53,29 @@ li.listhead{
     background-color: rgb(231, 231, 231);
     color: rgb(85, 85, 85);
 }
+
 li.dropdown:hover > .dropdown-menu {
     display: block;
+
+}
+#navba{
+z-index:10;
+    position:relative;background-color:#ffffff;
+    width: 100%;
+}
+
+.shop-item1 {
+    margin: 10px auto;
+    width: 250px;
+    height: 450px;
+
+    line-height: 450px;
+    border: 1px solid red;
+}
+.resize_fit_center {
+    max-width:100%;
+    max-height:100%;
+    vertical-align: middle !important;
 }
 
 /* Background color classes */
@@ -258,27 +277,36 @@ li.dropdown:hover > .dropdown-menu {
 }
 .shop-items .item {
     position: relative;
-    max-width: 360px;
+    width: 260px;
+    height:390px;
     margin: 15px auto;
     padding: 5px;
     text-align: center;
     border-radius: 4px;
     overflow: hidden;
     border:2px solid #eee;
+
 }
 .shop-items .item:hover{
     border:2px solid #32c8de;
 }
-.shop-items .item img {
-    width: 100%;
-    max-width: 360px;
-    margin: 0 auto;
-    border: 1px solid #eee;
-    border-radius: 3px;
+.bocimage{
+    margin: 10px;
+    width: 225px;
+    height: 290px;
+    line-height: 289px;
+    text-align: center;
+    border: 1px solid #eeeeee;
+}
+.fuck {
+    max-width:100%;
+    max-height:100%;
+    vertical-align: middle;
 }
 .shop-items .item  .item-dtls h4 {
     margin-top: 13px;
     margin-bottom: 10px;
+    text-align: center;
     text-transform: uppercase;
 }
 .shop-items .item  .item-dtls .price {
@@ -315,4 +343,10 @@ li.dropdown:hover > .dropdown-menu {
 .shop-items .item  .ecom  a.btn:hover{
     background:#fff;
     color:#777;
+}
+center {
+    display:none;
+}
+.dmm~div{
+    display:none;
 }
