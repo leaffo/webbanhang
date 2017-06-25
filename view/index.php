@@ -14,8 +14,8 @@
 
 </head>
 <body>
-<div class="bocContainer">
-    <div class="container" style="font-size:12px;">
+<div  class="bocContainer">
+    <div  class="container" style="font-size:12px;">
         <div class="col-xs-6">
             <ul style="">
                 <li class="listhead"><a href="#">login</a> or <a href="#">register</a></li>
@@ -28,7 +28,7 @@
                 <li class="listhead"><a href="#">MY Account</a></li>
                 <li class="listhead" id="spanglyphicon"><a href="#"><span class="glyphicon glyphicon-user"></span>
                         Wishlist</a></li>
-                <li class="" id="spanglyphicon"><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span>
+                <li class="shoppingcart" id="spanglyphicon"><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span>
                         Shopping cart</a></li>
             </ul>
         </div>
@@ -109,7 +109,7 @@
     <div class="container">
         <div class="col-md-12">
             <ul class="breadcrumb" style="padding:30px 15px; background-color:#ffffff; font-size:10px">
-                <li><a href="#">Home</a></li>
+                <li><a  href="#">Home</a></li>
                 <li><a href="#">Pictures</a></li>
                 <li><a href="#">Summer 15</a></li>
                 <li>Italy</li>
@@ -118,34 +118,42 @@
     </div>
 
 </div>
-
-<div class="shop-items">
-    <div class="container-fluid">
-        <div class="row" ng-app="app" ng-controller="con">
-            <div class="col-md-3 col-sm-6" ng-repeat="x in product" >
-                <!-- Restaurant Item -->
-                <div class="item">
-                    <!-- Item's image -->
-                    <div class="bocimage">
-                        <img class="fuck" src="{{x.url_image}}" alt="">
-                    </div>
-                    <!-- Item details -->
-                    <div class="item-dtls">
-                        <!-- product title -->
-                        <h4><a href="#">{{x.name_product}}</a></h4>
-                        <!-- price -->
-                        <span class="price ">${{x.price}}</span>
-                    </div>
-                    <!-- add to cart btn -->
-                    <div class="ecom bg-lblue">
-                        <a class="btn" href="#">Add to cart</a>
+<div class="bocContainer">
+    <div class="shop-items">
+        <div class="container-fluid">
+            <div class="row" ng-app="app" ng-controller="con">
+                <div class="col-md-3 col-sm-6" ng-repeat="x in product">
+                    <!-- Restaurant Item -->
+                    <div class="item">
+                        <!-- Item's image -->
+                        <div class="bocimage">
+                            <img class="fuck" src="{{x.url_image}}" alt="">
+                        </div>
+                        <!-- Item details -->
+                        <div class="item-dtls">
+                            <!-- product title -->
+                            <h4><a href="#">{{x.name_product}}</a></h4>
+                            <!-- price -->
+                            <span class="price ">${{x.price}}</span>
+                        </div>
+                        <!-- add to cart btn -->
+                        <div class="ecom bg-lblue">
+                            <a class="btn" href="cart.php">Add to cart</a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
     </div>
 </div>
+<!--
+<span>
+    <span class="flycart">shopping cart</span>
+</span>
+-->
+
+
 <script src="../lib/js/angular.1.4.8.min.js"></script>
 <script src="../lib/js/jquery.3.2.1.min.js"></script>
 <script src="../lib/js/bootstrap.3.3.7.min.js"></script>
@@ -153,21 +161,19 @@
 <script>
     $(function () {
 
-        $("#click").click(function () {
-            alert("");
-        });
 
 
         var navY = $('#navba').offset().top;
         var nav = $('#navba');
-
         var w = $(window);
         w.scroll(function () {
             var wtop = w.scrollTop();
 
             $('#countY').text(wtop);
             if (wtop >= navY) {
-                console.log("fuck");
+/*
+                $('.flycart').show();
+*/
                 $('#navba').css({
                     top: 0,
                     position: 'fixed'
@@ -175,7 +181,10 @@
             }
 
             else {
-                $('#navba').css({
+/*
+                $('.flycart').hide();
+*/
+                    $('#navba').css({
 
                     position: 'relative'
 
@@ -191,7 +200,7 @@
     app.controller('con', function ($scope, $http) {
         $http({
             method: 'GET',
-            url: '../model/selectVay.php'
+            url: '../control/selectVay.php'
         }).then(function (ret) {
             $scope.product = ret.data;
         });

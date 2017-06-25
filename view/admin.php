@@ -28,9 +28,9 @@ include 'toppage.php';
                     </tr>
                     <tr ng-repeat="x in product">
 
-                        <td><input id="name{{$index}}"  type="text"
+                        <td><input id="name{{$index}}" type="text"
                                    value="{{x.name_product}}"/></td>
-                        <td><input id="price{{$index}}"  type="number"
+                        <td><input id="price{{$index}}" type="number"
                                    value="{{x.price}}"
                                 /></td>
                         <td><input id="url_image{{$index}}"
@@ -39,7 +39,8 @@ include 'toppage.php';
                                 /></td>
                         <td>
                             <button class="btn btn-green"
-                                    data-index="{{$index}}" ng-click="sua($event,x.id_product)">sửa
+                                    data-index="{{$index}}"
+                                    ng-click="sua($event,x.id_product)">sửa
                             </button>
                             <button class="btn btn-danger" ng-click="xoa(x.id_product)">xóa</button>
                         </td>
@@ -65,7 +66,7 @@ include 'toppage.php';
             select = function () {
                 $http({
                     method: 'GET',
-                    url: '../model/selectVay.php'
+                    url: '../control/selectVay.php'
                 }).then(function (ret) {
                     $scope.product = ret.data;
                 });
@@ -74,9 +75,11 @@ include 'toppage.php';
             $scope.them = function () {
                 dataT = ({'name': $scope.nameT, 'price': $scope.priceT, 'url': $scope.urlT});
                 $http.post(
-                    '../control/themsp.php', dataT).then(function (ret) {
-                        if (ret.data)
+                    '../control/themsptable.php', dataT).then(function (ret) {
+                        if (ret.data) {
+                            alert(ret.data);
                             select();
+                        }
                         else alert('fuck');
                     });
             };
@@ -86,14 +89,14 @@ include 'toppage.php';
                     select();
                 });
             };
-            $scope.sua = function ($event,id) {
+            $scope.sua = function ($event, id) {
                 btn = $event.currentTarget;
                 idd = $(btn).data('index');
 
-                names=$('#name'+ idd).val();
-                prices=$('#price'+ idd).val();
-                urls=$('#url_image'+ idd).val();
-                dataSua=({id:id,name:names,price:prices,url:urls});
+                names = $('#name' + idd).val();
+                prices = $('#price' + idd).val();
+                urls = $('#url_image' + idd).val();
+                dataSua = ({id: id, name: names, price: prices, url: urls});
                 //alert(JSON.stringify(dataSua));
                 $http.post('../control/suasp.php', dataSua).then(function (ret) {
                     alert(ret.data);
@@ -114,5 +117,4 @@ include 'toppage.php';
 
 <?php
 include 'bottompage.php';
-
 ?>
