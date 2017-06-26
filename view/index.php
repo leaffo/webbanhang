@@ -5,6 +5,8 @@
     <title>ONLANG Shop</title>
     <link href="../lib/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="../lib/css/fuck.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="../lib/css/text.css"/>
+
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,8 +16,43 @@
 
 </head>
 <body>
-<div  class="bocContainer">
-    <div  class="container" style="font-size:12px;">
+
+<div class="giohang">
+    <div class="cd-cart-container empty">
+        <a href="#0" class="cd-cart-trigger">
+            Cart
+            <ul class="count"> <!-- cart items count -->
+                <li>0</li>
+                <li>0</li>
+            </ul>
+            <!-- .count -->
+        </a>
+
+        <div class="cd-cart">
+            <div class="wrapper">
+                <header>
+                    <h2>Cart</h2>
+                    <span class="undo">Item removed. <a href="#0">Undo</a></span>
+                </header>
+
+                <div class="body">
+                    <ul>
+
+                        <!-- products added to the cart will be inserted here using JavaScript -->
+                    </ul>
+                </div>
+
+                <footer>
+                    <a href="#0" class="checkout"><em>Checkout - $<span>0</span></em></a>
+                </footer>
+            </div>
+        </div>
+        <!-- .cd-cart -->
+    </div>
+    <!-- cd-cart-container -->
+</div>
+<div class="bocContainer">
+    <div class="container" style="font-size:12px;">
         <div class="col-xs-6">
             <ul style="">
                 <li class="listhead"><a href="#">login</a> or <a href="#">register</a></li>
@@ -28,7 +65,8 @@
                 <li class="listhead"><a href="#">MY Account</a></li>
                 <li class="listhead" id="spanglyphicon"><a href="#"><span class="glyphicon glyphicon-user"></span>
                         Wishlist</a></li>
-                <li class="shoppingcart" id="spanglyphicon"><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span>
+                <li class="shoppingcart" id="spanglyphicon"><a href="#"><span
+                            class="glyphicon glyphicon-shopping-cart"></span>
                         Shopping cart</a></li>
             </ul>
         </div>
@@ -39,7 +77,7 @@
     <div class="container">
         <div class="col-xs-6 first-header">
             <a style="text-decoration: none; font-weight: 400; font-size:34px;" href="#">
-                <image src="../lib/images/iconweb.png"></image>
+                <image style="vertical-align: middle" src="../lib/images/iconweb.png"></image>
                 Ơn làng Shop
             </a>
         </div>
@@ -109,7 +147,7 @@
     <div class="container">
         <div class="col-md-12">
             <ul class="breadcrumb" style="padding:30px 15px; background-color:#ffffff; font-size:10px">
-                <li><a  href="#">Home</a></li>
+                <li><a href="#">Home</a></li>
                 <li><a href="#">Pictures</a></li>
                 <li><a href="#">Summer 15</a></li>
                 <li>Italy</li>
@@ -127,18 +165,23 @@
                     <div class="item">
                         <!-- Item's image -->
                         <div class="bocimage">
-                            <img class="fuck" src="{{x.url_image}}" alt="">
+
+                            <img class="fuck" id="img{{$index}}" src="{{x.url_image}}" alt="">
                         </div>
                         <!-- Item details -->
                         <div class="item-dtls">
                             <!-- product title -->
-                            <h4><a href="#">{{x.name_product}}</a></h4>
+                            <h4><a href="#0" id="name{{$index}}">{{x.name_product}}</a></h4>
+
                             <!-- price -->
-                            <span class="price ">${{x.price}}</span>
+                            <span class="price">${{x.price}}</span>
                         </div>
                         <!-- add to cart btn -->
-                        <div class="ecom bg-lblue">
-                            <a class="btn" href="cart.php">Add to cart</a>
+                        <div class="ecom" style="
+    background-color: #32c8de !important;">
+                            <a data-index="{{$index}}" data-price="{{x.price}}" data-name="{{x.name_product}}" data-image="{{x.url_image}}"
+                               ng-click="addtocart($event)" class="btn">
+                                Add to cart</a>
                         </div>
                     </div>
                 </div>
@@ -150,30 +193,29 @@
 <!--
 <span>
     <span class="flycart">shopping cart</span>
-</span>
--->
+</span>-->
 
 
-<script src="../lib/js/angular.1.4.8.min.js"></script>
 <script src="../lib/js/jquery.3.2.1.min.js"></script>
+<script src="../lib/js/angular.1.4.8.min.js"></script>
+
 <script src="../lib/js/bootstrap.3.3.7.min.js"></script>
 <div class="dmm"></div>
 <script>
     $(function () {
 
 
-
         var navY = $('#navba').offset().top;
         var nav = $('#navba');
+
         var w = $(window);
         w.scroll(function () {
             var wtop = w.scrollTop();
 
             $('#countY').text(wtop);
             if (wtop >= navY) {
-/*
-                $('.flycart').show();
-*/
+                /*      $('.flycart').show();
+                 */
                 $('#navba').css({
                     top: 0,
                     position: 'fixed'
@@ -181,10 +223,9 @@
             }
 
             else {
-/*
-                $('.flycart').hide();
-*/
-                    $('#navba').css({
+                /*    $('.flycart').hide();
+                 */
+                $('#navba').css({
 
                     position: 'relative'
 
@@ -197,14 +238,29 @@
 <script>
 
     var app = angular.module('app', []);
+    b = 1;
     app.controller('con', function ($scope, $http) {
+        var index;
+        var cartbtn;
         $http({
             method: 'GET',
             url: '../control/selectVay.php'
         }).then(function (ret) {
             $scope.product = ret.data;
         });
+
+        $scope.addtocart = function (event) {
+            a = $(event.target);
+            var id = a.data('index');
+            img = a.parents('.item').children('.bocimage').children('img').attr('src');
+            price = a.parents('.item').children('.item-dtls').children('span').text();
+            name = a.parents('.item').children('.item-dtls').children('h4').children('a').text();
+
+        }
+
     });
 </script>
+
+<script src="../lib/js/cart.js"></script>
 </body>
 </html>
