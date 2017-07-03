@@ -74,8 +74,9 @@ include 'toppage.php';
             select();
             $scope.them = function () {
                 dataT = ({'name': $scope.nameT, 'price': $scope.priceT, 'url': $scope.urlT});
-                $http.post(
-                    '../control/themsptable.php', dataT).then(function (ret) {
+               /* alert(JSON.stringify(dataT));*/
+
+                $http.post('../control/themsp.php', dataT).then(function (ret) {
                         if (ret.data) {
                             alert(ret.data);
                             select();
@@ -98,7 +99,7 @@ include 'toppage.php';
                 urls = $('#url_image' + idd).val();
                 dataSua = ({id: id, name: names, price: prices, url: urls});
                 //alert(JSON.stringify(dataSua));
-                $http.post('../control/suasp.php', dataSua).then(function (ret) {
+                $http.post('../control/suasptable.php', dataSua).then(function (ret) {
                     alert(ret.data);
                 });
             };

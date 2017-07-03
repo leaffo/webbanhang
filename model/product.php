@@ -9,19 +9,20 @@ class product
         $this->db = $db;
     }
 
-    function testthem($ten,$url=2){
-        $sql="INSERT INTO `category`( `name_category`, `sub_of_category`) VALUES ('$ten',$url)";
+    function testthem($ten,$price, $url,$dm=1)
+    {
+        $sql = "INSERT INTO `product`( `name_product`, `price`,`url_image`, `id_category`)  VALUES ('$ten',$price,'$url',$dm)";
         return $this->db->exec($sql);
     }
 
-    function themproduct($ten, $price,  $url,$sale_price = 0, $dm=1, $noibat = 1,
+   /* function themproduct($ten, $price, $url, $sale_price = 0, $dm = 1, $noibat = 1,
                          $banchay = 1, $thumb = "thumb", $donvi = "chiec",
                          $spmoi = 1,
                          $tenkhongdau = "tenkhongdau",
                          $des = "des", $hienthi = 1, $ngaytao = 0,
                          $xuatxu = "trungquoc", $id_size = 1, $noidung = "noidung")
-                        {
-                            $sql = "INSERT INTO `product`(
+    {
+        $sql = "INSERT INTO `product`(
     `name_product`,`price`, `sale_price`, `url_image`,`id_category`,`noibat`,
      `banchay`,
      `thumb`, `donvi`, `spmoi`, `tenkhongdau`, `des`,
@@ -30,23 +31,8 @@ class product
             '$ten',$price,$sale_price,'$url',$dm,$noibat,
     $banchay,'$thumb','$donvi',$spmoi,'$tenkhongdau',
     '$des',$hienthi,$ngaytao,'$xuatxu',$id_size,'$noidung')";
-
-/*
- *
-    `name_product`,
-     `price`, `sale_price`, `url_image`, `id_category`, `noibat`, `banchay`,
-     `thumb`, `donvi`, `spmoi`, `tenkhongdau`, `des`, `hienthi`, `ngaytao`, `ngaysua`,
-      `xuatxu`, `id_size`, `noidung`
-
-            '$ten',$price,$sale_price,'$url',$dm,$noibat,
-    $banchay,'$thumb','$donvi',$spmoi,'$tenkhongdau',
-    '$des',$hienthi,$ngaytao,$$ngaysua,'$xuatxu',$id_size,'$noidung'
-            */
-
-                            /*$sql="INSERT INTO `product`(`name_product`,`sale_price` ,`price`, `url_image`, `id_category`) VALUES (
-'$ten',$sale_price,$price,'$url')";*/
         return $this->db->exec($sql);
-    }
+    }*/
 
     function xoaproduct($id)
     {

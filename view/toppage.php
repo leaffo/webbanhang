@@ -1,25 +1,34 @@
 <?php
+
+header('Content-Type: text/html; charset=utf-8');
 ?>
 <!DOCTYPE html>
 
 <html lang="vi">
 <head>
-    <title>ONLANG Shop</title>
-    <link href="../lib/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+    <title>ONLANG Shop</title><!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="../lib/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="../lib/css/bootstrap-theme.css">
+
+
+    <link rel="stylesheet" href="../lib/css/text.css"/>
+
     <link href="../lib/css/fuck.css" rel="stylesheet" type="text/css"/>
-
+    <link href="../lib/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <script src="../lib/js/angular.1.4.8.min.js"></script>
-    <script src="../lib/js/footer-reveal.js"></script>
     <script src="../lib/js/jquery.3.2.1.min.js"></script>
-    <script src="../lib/js/bootstrap.3.3.7.min.js"></script>
+    <script src="../lib/js/angular.1.4.8.min.js"></script>
 
-    <!--
-    font-family: 'Noto Sans', sans-serif;
-    -->
+    <script src="../lib/js/bootstrap.3.3.7.min.js"></script>
 
 </head>
 <body>

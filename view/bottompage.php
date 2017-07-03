@@ -1,75 +1,90 @@
-<?php
 
-
-
-?>
-<footer class="footerss" style="list-style:none;">
-    <div class="container-fluid">
-        <div class="col-md-2">
-            <ul>
-
-                <div class="headfooter">
-                    Head
+<div class="foter">
+    <footer>
+        <div class="footer" id="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                        <h3> Lorem Ipsum </h3>
+                        <ul>
+                            <li><a href="#"> Lorem Ipsum </a></li>
+                            <li><a href="#"> Lorem Ipsum </a></li>
+                            <li><a href="#"> Lorem Ipsum </a></li>
+                            <li><a href="#"> Lorem Ipsum </a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                        <h3> Lorem Ipsum </h3>
+                        <ul>
+                            <li><a href="#"> Lorem Ipsum </a></li>
+                            <li><a href="#"> Lorem Ipsum </a></li>
+                            <li><a href="#"> Lorem Ipsum </a></li>
+                            <li><a href="#"> Lorem Ipsum </a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                        <h3> Lorem Ipsum </h3>
+                        <ul>
+                            <li><a href="#"> Lorem Ipsum </a></li>
+                            <li><a href="#"> Lorem Ipsum </a></li>
+                            <li><a href="#"> Lorem Ipsum </a></li>
+                            <li><a href="#"> Lorem Ipsum </a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                        <h3> Lorem Ipsum </h3>
+                        <ul>
+                            <li><a href="#"> Lorem Ipsum </a></li>
+                            <li><a href="#"> Lorem Ipsum </a></li>
+                            <li><a href="#"> Lorem Ipsum </a></li>
+                            <li><a href="#"> Lorem Ipsum </a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3  col-md-3 col-sm-6 col-xs-12 ">
+                        <h3> Lorem Ipsum </h3>
+                        <ul>
+                            <li>
+                                <div class="input-append newsletter-box text-center">
+                                    <input type="text" class="full text-center" placeholder="Email ">
+                                    <button class="btn  bg-gray" type="button"> Lorem ipsum <i
+                                            class="fa fa-long-arrow-right"> </i></button>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="social">
+                            <li><a href="#"> <i class=" fa fa-facebook"> </i> </a></li>
+                            <li><a href="#"> <i class="fa fa-twitter"> </i> </a></li>
+                            <li><a href="#"> <i class="fa fa-google-plus"> </i> </a></li>
+                            <li><a href="#"> <i class="fa fa-pinterest"> </i> </a></li>
+                            <li><a href="#"> <i class="fa fa-youtube"> </i> </a></li>
+                        </ul>
+                    </div>
                 </div>
-                <li><a href="#">footer</a></li>
-                <li><a href="#">footer</a></li>
-                <li><a href="#">footer</a></li>
-                <li><a href="#">footer</a></li>
-                <li><a href="#">footer</a></li>
-                <li><a href="#">footer</a></li>
-            </ul>
-        </div>
-        <div class="col-md-2">
-            <ul>
-
-                <div class="headfooter">
-                    Head
-                </div>
-                <li><a href="#">footer</a></li>
-                <li><a href="#">footer</a></li>
-                <li><a href="#">footer</a></li>
-                <li><a href="#">footer</a></li>
-                <li><a href="#">footer</a></li>
-                <li><a href="#">footer</a></li>
-            </ul>
-        </div>
-        <div class="col-md-2">
-            <ul>
-
-                <div class="headfooter">
-                    Head
-                </div>
-                <li><a href="#">footer</a></li>
-                <li><a href="#">footer</a></li>
-                <li><a href="#">footer</a></li>
-                <li><a href="#">footer</a></li>
-                <li><a href="#">footer</a></li>
-                <li><a href="#">footer</a></li>
-            </ul>
-        </div>
-        <div class="col-md-6">
-            <div class="headfooter">
-                Head
+                <!--/.row-->
             </div>
-
+            <!--/.container-->
         </div>
-    </div>
+        <!--/.footer-->
+
+        <div class="footer-bottom">
+            <div class="container">
+                <p class="pull-left"> Copyright &reg; Footer 2014. All right reserved. </p>
+
+                <div class="pull-right">
+                    <ul class="nav nav-pills payments">
+                        <li><i class="fa fa-cc-visa"></i></li>
+                        <li><i class="fa fa-cc-mastercard"></i></li>
+                        <li><i class="fa fa-cc-amex"></i></li>
+                        <li><i class="fa fa-cc-paypal"></i></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--/.footer-bottom-->
+    </footer>
+</div>
 
 
-</footer>
-<script src="../lib/js/footer-reveal.min.js"></script>
 
-<script>
-    $(function () {
-        $('#footerss').footerReveal();
-    });
-    $(function () {
-        $('section.about a').click(function () {
-            $('html, body').animate({scrollTop: $(document).height()}, 2000);
-            return false;
-        });
-    });
-</script>
 </body>
-
 </html>
