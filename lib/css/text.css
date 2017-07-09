@@ -495,7 +495,7 @@ Main Components
 }
 .cd-cart .actions {
     font-size: 1.4rem;
-    height: 1.6em;
+    /*height: 1.6em;*/
     line-height: 1.6em;
 }
 .cd-cart .actions::after {

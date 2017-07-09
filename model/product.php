@@ -9,7 +9,13 @@ class product
         $this->db = $db;
     }
 
-    function testthem($ten,$price, $url,$dm=1)
+    function selectidproduct($id){
+        $sql="SELECT `id_product`, `name_product`, `price`, `sale_price`, `url_image`, `id_category`, `noibat`, `banchay`, `thumb`, `donvi`, `spmoi`, `tenkhongdau`, `des`, `hienthi`, `ngaytao`, `ngaysua`, `luotxem`, `luotmua`, `xuatxu`, `id_size`, `noidung` FROM `product` WHERE `id_product`=$id";
+        return $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+    function themsp($ten,$price, $url,$dm)
     {
         $sql = "INSERT INTO `product`( `name_product`, `price`,`url_image`, `id_category`)  VALUES ('$ten',$price,'$url',$dm)";
         return $this->db->exec($sql);
@@ -40,9 +46,9 @@ class product
         return $this->db->exec($sql);
     }
 
-    function suaproduct($id, $ten, $price, $url)
+    function suaproduct($id, $ten, $price, $url,$dmcha)
     {
-        $sql = "UPDATE `product` SET `name_product`='$ten',`price`=$price,`url_image`='$url' WHERE `id_product`=$id";
+        $sql = "UPDATE `product` SET `name_product`='$ten',`price`=$price,`url_image`='$url',`id_category`=$dmcha WHERE `id_product`=$id";
         return $this->db->exec($sql);
     }
 

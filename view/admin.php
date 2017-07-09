@@ -1,88 +1,126 @@
 <?php
 include 'toppage.php';
-
-
 ?>
 
-    <div ng-app="app" ng-controller="con">
-        <div>
-            <form>
-                <table class="table" style="padding:0px; margin:0px">
-                    <thead style="font-weight: bold">
-                    <td>name</td>
-                    <td>price</td>
-                    <td>url_image</td>
-                    <td></td>
-                    </thead>
+    <div class="container" ng-app="app" ng-controller="con">
+        <div class="col-md-4">
+            <h1>Danh Mục</h1>
 
-                    <tr>
-                        <td><input id="" type="text"
-                                   ng-model="nameT" placeholder="thêm"/></td>
-                        <td><input id="" type="number"
-                                   ng-model="priceT" placeholder="thêm"/></td>
-                        <td><input id="" type="text"
-                                   ng-model="urlT" placeholder="thêm"/></td>
-                        <td>
-                            <button ng-click=them() class="btn btn-green">thêm</button>
-                        </td>
-                    </tr>
-                    <tr ng-repeat="x in product">
+            <p><a href="#" ng-click="select('null')">all</a></p>
 
-                        <td><input id="name{{$index}}" type="text"
-                                   value="{{x.name_product}}"/></td>
-                        <td><input id="price{{$index}}" type="number"
-                                   value="{{x.price}}"
-                                /></td>
-                        <td><input id="url_image{{$index}}"
-                                   type="text"
-                                   value="{{x.url_image}}"
-                                /></td>
-                        <td>
-                            <button class="btn btn-green"
-                                    data-index="{{$index}}"
-                                    ng-click="sua($event,x.id_product)">sửa
-                            </button>
-                            <button class="btn btn-danger" ng-click="xoa(x.id_product)">xóa</button>
-                        </td>
+            <div ng-repeat="y in product_cat">
 
-                    </tr>
-                </table>
-            </form>
+                <p><a href="#" ng-click="select(y.id)">{{y.ten}}</a></p>
+            </div>
         </div>
+
+        <div class="col-md-8">
+            <form><h1>Thêm</h1>
+
+
+                <label for="name">Tên<input class="form-control" id="name" type="text" ng-model="nameT"
+                                            placeholder="thêm"/></label>
+                <label for="price">Giá<input class="form-control" id="price" type="number" ng-model="priceT"
+                                             placeholder="thêm"/></label>
+
+                <label for="url">Url ảnh<input class="form-control" id="url" type="text" ng-model="urlT"
+                                               placeholder="thêm"/></label>
+                <label for="dm">Danh muc
+                    <select ng-model="danhmucid" name="" id="dm" class="form-control">
+                        <option ng-repeat="y in product_cat"
+                                value="{{y.id}}">
+                            {{y.ten}}
+                        </option>
+                    </select>
+                </label>
+
+                <button ng-click=them() class="btn btn-green">thêm</button>
+            </form>
+            <hr>
+            <form ng-repeat="x in product">
+                <label for="name{{$index}}">Tên</label>
+                <input id="name{{$index}}" type="text"
+                       value="{{x.name_product}}"/>
+                <button ng-click="bool=!bool" class="btn">Chi tiết</button>
+                <div ng-if="bool" class="fade1">
+                    <label for="price{{$index}}">Giá</label>
+                    <input id="price{{$index}}" type="number" class="form-control"
+                           value="{{x.price}}"
+                        />
+                    <label for="url_image{{$index}}">Link Ảnh</label>
+                    <input id="url_image{{$index}}" class="form-control"
+                           type="text"
+                           value="{{x.url_image}}"
+                        />
+                    <label for="dmcha{{$index}}">Danh mục cha</label>
+                    <select class="form-control" name="" id="dmcha{{$index}}">
+                        <option ng-selected="ktracodmchakhong(z.id,x.id_category)" ng-repeat="z in product_cat"
+                                value="{{z.id}}">{{z.ten}}
+                        </option>
+                    </select>
+                    <button class="btn btn-green"
+                            data-index="{{$index}}"
+                            ng-click="sua($event,x.id_product)">sửa
+                    </button>
+                    <button class="btn btn-danger" ng-click="xoa(x.id_product)">xóa</button>
+
+                </div>
+            </form>
+
+        </div>
+
 
     </div>
 
-
-
-
-    <script src="../lib/js/angular.1.4.8.min.js"></script>
-
-    <script src="../lib/js/jquery.3.2.1.min.js"></script>
-
-    <script src="../lib/js/bootstrap.3.3.7.min.js"></script>
     <script>
         var app = angular.module('app', []);
         app.controller('con', function ($scope, $http) {
-            select = function () {
+            selectdm = function () {
                 $http({
                     method: 'GET',
-                    url: '../control/selectVay.php'
+                    url: '../control/selectdm.php'
                 }).then(function (ret) {
-                    $scope.product = ret.data;
+                    items = ret.data;
+
+                    $scope.product_cat = items;
+
                 });
             };
-            select();
+            selectdm();
+            $scope.select = function (id="null") {
+
+                $scope.danhmucid = id;
+                $http({
+
+                    method: 'GET',
+                    url: '../control/selectVay.php?idcat=' + id
+                }).then(function (ret) {
+                    $scope.product = ret.data;
+
+                });
+
+            };
+            $scope.select();
+
+            $scope.ktracodmchakhong = function (x, y) {
+                if (x == y) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            };
             $scope.them = function () {
-                dataT = ({'name': $scope.nameT, 'price': $scope.priceT, 'url': $scope.urlT});
-               /* alert(JSON.stringify(dataT));*/
+                dataT = ({'name': $scope.nameT, 'price': $scope.priceT, 'url': $scope.urlT, 'dmcha': $scope.danhmucid});
+                 alert(JSON.stringify(dataT));
 
                 $http.post('../control/themsp.php', dataT).then(function (ret) {
-                        if (ret.data) {
-                            alert(ret.data);
-                            select();
-                        }
-                        else alert('fuck');
-                    });
+                    if (ret.data) {
+                        alert(ret.data);
+                        $scope.select($scope.danhmucid);
+                    }
+                    else alert('fuck');
+                });
             };
 
             $scope.xoa = function (id) {
@@ -97,8 +135,9 @@ include 'toppage.php';
                 names = $('#name' + idd).val();
                 prices = $('#price' + idd).val();
                 urls = $('#url_image' + idd).val();
-                dataSua = ({id: id, name: names, price: prices, url: urls});
-                //alert(JSON.stringify(dataSua));
+                dmcha = $('#dmcha' + idd).val();
+                dataSua = ({id: id, name: names, price: prices, url: urls, dmcha: dmcha});
+                alert(JSON.stringify(dataSua));
                 $http.post('../control/suasptable.php', dataSua).then(function (ret) {
                     alert(ret.data);
                 });
