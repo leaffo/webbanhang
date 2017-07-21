@@ -13,7 +13,7 @@ header('Content-Type: text/html; charset=utf-8');
     <link rel="stylesheet" href="../lib/css/bootstrap-theme.css">
 
 
-    <link rel="stylesheet" href="../lib/css/text.css"/>
+    <link rel="stylesheet" href="../lib/css/cart.css"/>
 
     <link href="../lib/css/fuck.css" rel="stylesheet" type="text/css"/>
     <link href="../lib/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -29,6 +29,5 @@ header('Content-Type: text/html; charset=utf-8');
     <script src="../lib/js/angular.1.4.8.min.js"></script>
 
     <script src="../lib/js/bootstrap.3.3.7.min.js"></script>
-
 </head>
 <body>

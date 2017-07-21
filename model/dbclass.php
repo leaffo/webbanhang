@@ -3,8 +3,8 @@
 $dbname = 'u608891118_onlan';
 $host = 'mysql.hostinger.vn';
 $user = 'u608891118_onlan';
-$pass='R4X9rurzPxDW';
-*/
+$pass='R4X9rurzPxDW';*/
+
 $dbname = 'webbanhang';
 $host = 'localhost';
 $user = 'root';

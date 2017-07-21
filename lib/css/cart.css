@@ -100,7 +100,7 @@ Main Components
     /* dark bg layer visible when the cart is open */
     content: '';
     position: fixed;
-    z-index: 1;
+    z-index: 3;
     height: 100vh;
     width: 100vw;
     top: 0;
@@ -149,7 +149,7 @@ Main Components
 
 .cd-cart-trigger {
     /* button that triggers the cart content */
-    z-index: 3;
+    z-index: 4;
     height: 72px;
     width: 72px;
     /* replace text with image */
@@ -263,7 +263,7 @@ Main Components
 
 .cd-cart {
     /* cart content */
-    z-index: 2;
+    z-index: 3;
     width: 90%;
     max-width: 440px;
     height: 400px;
@@ -274,7 +274,7 @@ Main Components
     position: absolute;
     bottom: 0;
     right: 0;
-    z-index: 2;
+    z-index: 3;
     overflow: hidden;
     height: 72px;
     width: 72px;
@@ -289,7 +289,7 @@ Main Components
 }
 .cd-cart header, .cd-cart footer {
     position: absolute;
-    z-index: 2;
+    z-index: 5;
     left: 0;
     width: 100%;
 }
@@ -390,7 +390,7 @@ Main Components
 }
 .cd-cart .body {
     position: relative;
-    z-index: 1;
+    z-index: 4;
     height: calc(100% - 40px);
     padding: 20px 0 10px;
     margin: 40px 0 10px;
@@ -526,7 +526,7 @@ Main Components
     /* switcher arrow for select element */
     content: '';
     position: absolute;
-    z-index: 1;
+    z-index: 4;
     right: 0;
     top: 50%;
     -webkit-transform: translateY(-50%);
